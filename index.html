@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TIMELINE AND LOCATION</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: #000;
+      color: white;
+      overflow: hidden;
+    }
+
+    .background {
+      background-image: url('WhatsApp Image 2025-07-08 at 12.50.33_69f7efba.jpg');
+      background-size: cover;
+      background-position: center;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      filter: brightness(0.6);
+      z-index: -1;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+    }
+
+    .slide {
+      display: none;
+    }
+
+    .slide.active {
+      display: block;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    h1, h2, h3, p {
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+    }
+
+    .highlight {
+      color: #00ffff;
+      font-weight: bold;
+      font-size: 2rem;
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 14px 30px;
+      background-color: #00aaff;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #0088cc;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .decorations {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .decorations img {
+      width: 70px;
+      height: auto;
+      filter: drop-shadow(0 0 6px rgba(255,255,255,0.4));
+    }
+  </style>
+</head>
+<body>
+
+  <div class="background"></div>
+
+  <div class="container">
+    <div class="slide active" id="slide1">
+      <h1 class="highlight">ARE YOU READY?</h1>
+    </div>
+
+    <div class="slide" id="slide2">
+      <h1 class="highlight">SAVE THE DATE</h1>
+      <h2>9 JULI - 3 SEPTEMBER</h2>
+    </div>
+
+    <div class="slide" id="slide3">
+      <h2 class="highlight">LOCATION</h2>
+      <h3>SMA SEMESTA SEMARANG</h3>
+      <p>Jl. Raya Manyaran-Gunungpati No.KM. 15,<br>
+         Nongkosawit, Kec. Gn. Pati,<br>
+         Kota Semarang, Jawa Tengah</p>
+    </div>
+
+    <button id="slideButton" onclick="nextSlide()">NEXT</button>
+
+    <div class="decorations">
+      <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="anak sekolah">
+      <img src="https://cdn-icons-png.flaticon.com/512/2674/2674531.png" alt="buku">
+      <img src="https://cdn-icons-png.flaticon.com/512/3460/3460475.png" alt="pena">
+      <img src="https://cdn-icons-png.flaticon.com/512/1995/1995574.png" alt="tas sekolah">
+    </div>
+  </div>
+
+  <script>
+    let current = 1;
+    const totalSlides = 3;
+
+    function nextSlide() {
+      document.getElementById('slide' + current).classList.remove('active');
+      current++;
+      if (current > totalSlides) current = 1;
+      document.getElementById('slide' + current).classList.add('active');
+
+      updateButtonText();
+    }
+
+    function updateButtonText() {
+      const button = document.getElementById('slideButton');
+      if (current === totalSlides) {
+        button.textContent = 'BACK';
+      } else {
+        button.textContent = 'NEXT';
+      }
+    }
+  </script>
+
+</body>
+</html>
